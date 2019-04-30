@@ -13,7 +13,7 @@ const GlobalData = {
 const vm = new Vue({
   el:'#app',
   data:GlobalData,
-  // store,
+  store,
   render: h => h(App)
   // created:function(){
 

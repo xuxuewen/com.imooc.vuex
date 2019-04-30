@@ -4,12 +4,33 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state:{
-    name:'iam state'
+    todoList:[
+      
+    ]
   },
   mutations:{
-    // 只能这里可以修改state
-    // 
-    // setter state
+    addTodo(state,todo){
+      state.todoList = [
+        ...state.todoList,
+        todo
+      ]
+    },
+    updateTodo(state,todo){
+      let newTodoList = state.todoList.map((oldTodo)=>{
+        if(oldTodo.id === todo.id){
+          return todo
+        }else{
+          return oldTodo
+        }
+      })
+      state.todoList = newTodoList;
+    },
+    reomoveTodo(state,todo){
+      let newTodoList = state.todoList.filter((oldTodo)=>{
+        return oldTodo.id !== todo.id
+      })
+      state.todoList = newTodoList;
+    }
   },
   getters:{
     // 
