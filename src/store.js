@@ -2,7 +2,9 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 Vue.use(Vuex);
 
+
 const store = new Vuex.Store({
+  namespace:true,
   state:{
     todoList:[
       
@@ -38,9 +40,36 @@ const store = new Vuex.Store({
       return state.name;
     }
   },
-  // actions:{
-  //   update
-  // }
+  modules:{
+    user:{
+      namespaced: true,
+      state:{
+        title:'username'
+      },
+      mutations:{
+        updateTitle(state,payload){
+          state.title = payload.title
+        }
+      },
+      actions:{
+        updateTitle(context,payload){
+          debugger
+          context.commit('updateTitle',payload)
+        }
+      },
+      getters:{
+        newTitle(state,getters){
+          console.log(state)
+          return state.title + Date.now()
+        }
+      }
+    },
+    product:{
+      state:{
+        title:'produce'
+      }
+    }
+  }
 })
 
 export default store;

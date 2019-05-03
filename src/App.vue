@@ -17,6 +17,9 @@
     
     <!-- Todo list -->
     <TodoList />
+
+    <Button @click="updateUserTitle">修改user title</Button>
+    <p>{{userTitle}}</p>
   </div>
 </template>
 <script>
@@ -53,10 +56,16 @@ export default {
         } 
       })
     },
+    updateUserTitle(){
+      this.$store.dispatch('user/updateTitle',{title:'1232'})
+    }
   },
   computed:{
     todoListLength(){
       return this.$store.state.todoList.length
+    },
+    userTitle(){
+      return this.$store.state.user.title
     }
   },
   mounted:function(){

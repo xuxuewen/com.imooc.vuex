@@ -15,10 +15,4 @@ const vm = new Vue({
   data:GlobalData,
   store,
   render: h => h(App)
-  // created:function(){
-
-  // },
-  // mounted:function(){
-  //   console.log('sdsd')
-  // }
 })
