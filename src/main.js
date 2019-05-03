@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import iView from 'iview';
-import App from './App.vue';
 import 'iview/dist/styles/iview.css';
-import store from './store';
+import App from './Project/TaskManage/App.vue';
+import store from './Project/TaskManage/store';
 
 Vue.use(iView);
 
