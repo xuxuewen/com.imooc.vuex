@@ -6,7 +6,7 @@
       <!-- todo 待处理任务 -->
       <div class="todo-task-list">
         <div class="header">
-          <span><Icon type="ios-refresh" />待处理 {{todoLength}}</span>
+          <span @click="refesh"><Icon type="ios-refresh" />待处理 {{todoLength}}</span>
           <div class="action">
             <Button @click="showDetail">添加任务</Button>
             <Button @click="progressAll">全部开始处理</Button>
@@ -47,6 +47,7 @@
 <script>
 import Task from './components/Task.vue'
 import TaskList from './components/TaskList.vue'
+import iView from 'iview'
 const StateDit = {
   todo:0,
   progress:1,
@@ -90,6 +91,12 @@ export default {
     },
   },
   methods:{
+    refesh(){
+      iView.LoadingBar.start();
+      setTimeout(()=>{
+        iView.LoadingBar.finish();
+      },3000)
+    },
     showDetail(){
       this.$store.commit('updateIsShowDetail',{
         isShowDetail:true
